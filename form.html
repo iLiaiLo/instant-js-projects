@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            margin:0;
+            align-items: center;
+            justify-content: center;
+        }
+        .formField{
+            display:flex;
+            flex-direction: column;
+            background-image: linear-gradient(45deg, aliceblue,skyblue,yellow);
+            width:30%;
+            padding-left:20px;
+            padding-right: 20px;
+            border-radius: 20px;
+        }
+        .formField label,h1{
+            text-align: center;
+            text-shadow: 2px 2px 15px dodgerblue;
+        }
+        
+        .formField label{
+            margin-bottom: 10px;
+            margin-top:25px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+       .formField button{
+        margin-top:15px;
+        padding: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        border-radius: 20px;
+        border:none;
+
+        background-image:linear-gradient(to right,dodgerblue,lightslategray);
+        opacity: 0.9;
+        transition: 1s;
+       }
+       .formField button:hover{
+        box-shadow: 0 0 15px darkblue;
+        color: aliceblue;
+        transition:1s;
+       }
+
+       .formField input{
+        padding:20px;
+        font-size: 24px;
+        border-radius: 10px;
+        border:none;
+        box-shadow: 0 0 5px darkblue inset;
+
+       }
+       .formField input:focus{
+        outline: none;
+       }
+       .anotherSubmit{
+        display: flex;
+        padding: 20px 0;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap:10px;
+       }
+
+       .fasIcon>i{
+        margin-left: 5px;
+        background-color: lightslategray;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+       }
+       .fasIcon>i:hover{
+        box-shadow: 0 0 5px dodgerblue;
+       }
+       .anotherSubmit>div:first-child{
+        font-size: 20px;
+        word-break: keep-all;
+       }
+       @media screen and (max-width:700px){
+        .formField{
+            height: 100%;
+        }
+        body{
+            overflow: hidden;
+        }
+       }
+       @media screen and (max-width:1000px){
+        .formField{
+            width:100%;
+        }
+        body{
+            overflow: hidden;
+        }
+       }
+    </style>
+</head>
+
+<body>
+    <form class="formField" autocomplete="on" action="#" name="registrationForm" target="_blank">
+        <h1>Login</h1>
+        <label for="inputName">Enter username</label>
+        <input type="text" id="inputName" oninvalid="Type(event)" oninput="setText(event,this)" required>
+
+        <label for="passwordInput">Enter password</label>
+        <input type="password" oninvalid="Type(event)" oninput="setPassword(event,this)"
+         pattern="(?=.+[A-Z])(?=.+[a-z])(?=.+[0-9]).{6,}" minlength="6"
+        id="passwordInput" class="passwordInput" required>
+
+        <button type="submit" onclick="submitData()">Submit</button>
+        <div class="anotherSubmit">
+            <div>or sign up using:</div>
+            <div class="fasIcon">
+            <i class="fa fa-facebook" ></i>
+            <i class="fa fa-instagram" ></i>
+            <i class="fa fa-linkedin"></i>
+            </div>
+        </div>
+    </form>
+  
+</body>
+<script>
+    function Type(e){
+        e.preventDefault();
+    }
+    function submitData(){
+        let passwordInput=document.getElementById("passwordInput");
+        let textInput=document.getElementById("inputName");
+        let regex=/(?=.+[A-Z])(?=.+[a-z])(?=.+[0-9]).{6,}/
+        if(regex.test(passwordInput.value)===false){
+            passwordInput.style.boxShadow="0 0 10px red inset";
+        }
+        if(!textInput.value){
+            textInput.style.boxShadow="0 0 10px red inset"
+        }
+        
+        
+    }
+
+    function setText(e,elem){
+        if(e.target.value){
+            elem.style.boxShadow="0 0 5px darkblue inset"
+        }
+    }
+    function setPassword(e,elem){
+        let regex=/(?=.+[A-Z])(?=.+[a-z])(?=.+[0-9]).{6,}/
+        if(regex.test(e.target.value) || e.target.value===""){
+            elem.style.boxShadow="0 0 5px darkblue inset";
+        }
+        else{
+            elem.style.boxShadow="0 0 10px red inset";
+        }
+    }
+    
+
+   
+</script>
+</html>

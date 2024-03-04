@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas</title>
+        <meta charset="utf-8" width="device-width" initial-scale="1.0" name="wievport">
+    <style>
+        label{
+            display: block;
+            margin-top:20px;
+            font-size:20px;
+            padding:10px;
+            color:white;
+            letter-spacing: 1px;
+        }
+        input{
+            width:50%;
+            padding:20px;
+        }
+        .container{
+            background:lightcoral;
+        }
+        form{
+            padding-bottom: 20px;
+            text-align: center;
+        }
+        .container button{
+            width:150px;
+            padding:15px;
+            margin-top:10px;
+            display: block;
+            position: relative;
+            left:50%;
+            margin-left:-75px;
+
+        }
+        #massage{
+            background:lightblue;
+            display:none;
+        }
+        #massage>p{
+            padding:20px;
+
+        }
+        h3{
+            padding:20px 0 20px 0;
+        
+        }
+        .valid{
+            background:rgb(25, 209, 25);
+            color:darkblue;
+            padding:20px;
+        }
+        
+        
+       
+    </style>
+    </head>
+    <body>
+
+      <div class="container">
+        <form action="#">
+            <label for="username">enter username</label>
+            <input type="text" name="user" id="username">
+            <label for="password">enter password</label>
+            <input type="password" name="pass" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+            <button type="submit">submit</button>
+        </form>
+      </div>
+      <div id="massage">
+        <h3>password must contain the following:</h3>
+        <p id="letter"><b>lowercase</b> letter</p>
+        <p id="number"><b>A</b> number</p>
+        <p id="characters"><b>at least 8</b> characters</p>
+        <p id="uppercase"><b>uppercase (capital)</b> letter</p>
+      </div>
+       
+        
+    </body>
+    <script>
+        let pass=document.getElementById("password");
+        let letter=document.getElementById("letter");
+        let number=document.getElementById("number");
+        let length=document.getElementById("characters");
+        let upper_letter=document.getElementById("uppercase");
+        
+
+        pass.onfocus=()=>{
+            document.getElementById("massage").style.display="block";
+        }
+        pass.onblur=()=>{
+            document.getElementById("massage").style.display="none";
+        }
+
+        pass.onkeyup=()=>{
+            let pattern_letter=/[a-z]/g;
+            if(pass.value.match(pattern_letter)){
+                letter.classList.add("valid")
+            }
+            else{
+                letter.classList.remove("valid")
+            }
+            let pattern_number=/[0-9]/g;
+            if(pass.value.match(pattern_number)){
+                number.classList.add("valid")
+            }
+            else{
+                number.classList.remove("valid")
+            }
+            let pattern_upper_letter=/[A-Z]/g;
+            if(pass.value.match(pattern_upper_letter)){
+                upper_letter.classList.add("valid")
+            }
+            else{
+                upper_letter.classList.remove("valid")
+            }
+
+            if(pass.value.length>=8){
+                length.classList.add("valid");
+            }
+            else{
+                length.classList.remove("valid");
+            }
+
+        }
+     
+        
+    </script>
+    
+</html>

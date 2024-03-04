@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>prac</title>
+    </head>
+    <style>
+        body{
+            background-image: linear-gradient(to left, black,rgb(55, 55, 55),black);
+           
+        }
+        
+        .wire{
+            width:6px;
+            height:calc(50% - 30px);
+            background:black;
+            position:absolute;
+            top:0;
+            left:50%;
+            margin-top:0;
+            margin-left:-5px;
+            z-index:-1;
+            opacity:0.6;
+            
+        }
+        .bulb{
+            width:30px;
+            height:30px;
+           border-radius: 30px;
+            border:1px solid transparent;
+            background-image:radial-gradient(closest-corner at 50% 50%,white,gray);
+            position:relative;
+            top:100%;
+            left:-13px;
+            z-index:1;
+            opacity:0.9;
+        }
+        .swich{
+            display:flex;
+            width:200px;
+            height:50px;
+            background:transparent;
+            position:absolute;
+            top:100%;
+            left:100%;
+            margin-top:-150px;
+            margin-left:-150px;
+            border:2px solid grey;
+            opacity:0.5;
+            transform: rotate(90deg);
+           
+        }
+        .swich .on{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width:100px;
+            height:auto;
+            background:transparent;
+            
+
+        }
+        .swich .on .minus{
+            width:30px;
+            height:10px;
+            background:grey;
+            
+        }
+        .swich .off{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            width:100px;
+            height:auto;
+            background:transparent;
+            border-left:2px solid grey;
+        }
+        .swich .off .circle{
+            width:20px;
+            height:20px;
+            border:5px solid grey;
+            border-radius:20px;
+        }
+        .swich:hover .on:hover .minus{
+            background-color: rgb(214, 214, 214);
+            cursor: pointer;
+            
+        }
+        .swich:hover .on:hover{
+            cursor:pointer;
+        }
+        .swich:hover .off:hover{
+            cursor:pointer;
+        }
+        .swich:hover .off:hover .circle{
+            border:5px solid rgb(214,214,214);
+            cursor: pointer;
+        }
+
+        
+
+      
+        
+    </style>
+    <body>
+        <div class="wire">
+            <div class="bulb"></div>
+            <div class="effect"></div>
+        </div>
+        <div class="swich">
+            <div class="on"><span class="minus"></span></div>
+            <div class="off"><span class="circle"></span></div>
+        </div>
+    
+    </body>
+    <script>
+        let on=document.querySelector(".on");
+        let off=document.querySelector(".off");
+        let bulb=document.querySelector(".bulb");
+        let effect=document.querySelector(".effect");
+        function add_style(){
+            bulb.style.background="yellow";
+        
+        bulb.style.backgroundImage = "radial-gradient(circle,orange, yellow)";
+        document.body.style.backgroundImage="radial-gradient(closest-corner at 50% 50% , yellow,black)";
+        document.body.style.backgroundAttachment="fixed";
+        document.body.style.backgroundRepeat="no repeat";
+        document.body.style.boxShadow="0 0 600px 0 yellow;";
+        }
+
+        on.addEventListener("click",add_style)
+
+        off.addEventListener("click",()=>{
+            document.body.style.backgroundImage=`linear-gradient(to left, black,rgb(${55}, ${55}, ${55}),black)`;
+            bulb.style.backgroundImage = "radial-gradient(closest-corner at 50% 50%,white,gray)";
+            bulb.style.opacity="0.9";
+        })
+
+    </script>
+
+
+</html>

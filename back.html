@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>practice</title>
+    </head>
+    <style>
+        body{
+            background-image: linear-gradient(to left, black,rgb(61, 61, 61),black  );
+        }
+        .frame{
+            position:absolute;
+            width:100px;
+            height:200px;
+            top: 50%;
+            left:50%;
+            transform:translate(-50%,-100%);
+            background:yellow;
+            perspective:300px;
+            transition:box-shadow 0.5s;
+        }
+        .door{
+            position:relative;
+            width:100px;
+            height:200px;
+            top: 50%;
+            left:50%;
+            margin-top:-100px;
+            margin-left:-50px;
+            background:tomato;
+            transition:transform 0.5s,margin-top 0.5s,margin-left 0.5s;
+            transform-origin: right;
+            
+            
+        }
+        .frame:hover .door{
+            transform: rotateY(180deg)  ;
+            margin-top:-100px;
+            margin-left:-50px;
+        
+            
+          
+        }
+        .frame:hover{
+            box-shadow:0 0 50px 0 yellow;
+            
+        }
+        .frame:hover .light{
+            width:200px;
+            box-shadow:0 0 50px 0 yellow;
+            filter: blur(5px);
+        }
+        .handle{
+            position:relative;
+            width:20px;
+            height:20px;
+            border-radius:20px;
+            background:brown;
+            top:50%;
+            transform: translate(10px,-10px);
+
+        }
+        .lightframe{
+            width:200px;
+            height:400px;
+            position: relative;
+            top:200px;
+            left:50%;
+            margin-top:-236px;
+            margin-left:-100px;
+            transform:rotateX(90deg);
+            
+           
+        }
+        .light{
+            width:0;
+            height:400px;
+            position:relative;
+            transition:width 0.5s,filter 2s,box-shadow 0.5s;
+            background:yellow;
+        }
+
+
+      
+      
+    </style>
+    <body>
+        <div class="frame">
+            <div class="door">
+                <div class="handle"></div>
+        </div>
+        <div class="lightframe">
+            <div class="light"></div>
+        </div>
+        </div>
+       
+    </body>
+    
+</html>
